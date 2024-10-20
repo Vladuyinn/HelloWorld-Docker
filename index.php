@@ -12,6 +12,13 @@
     <?php
     // Inclure le fichier qui contient les variables de connexion
     include('config/bdd.php');
+    $objBdd = new PDO(
+        "mysql:host=$bddserver;
+        dbname=$bddname;
+        charset=utf8",
+        $bddlogin,
+        $bddpass
+    );
 
     // Récupérer les données depuis la base de données
     $listeEtudiant = $objBdd->query("SELECT * FROM etudiant");
@@ -25,6 +32,7 @@
         echo "</div>";
         echo "</div>";
     }
+    $objBdd = null;
     ?>
 </body>
 
